@@ -1,6 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-I converted it to use Parcel for "start" and "build". This allowed me to remove about 100 packages.
 
 I shamelessly did the "npm run eject" step to get rid of the really elegant react-scripts
 thing that bootstrapping created for me.
