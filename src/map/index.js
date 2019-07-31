@@ -13,8 +13,9 @@ const Map = (props) => {
     }));
     const mapTarget = element => {theMap.setTarget(element)}
     return (
-        <div ref={mapTarget} style={props.style}>
-        </div>
+        <>
+            <div ref={mapTarget} style={props.style}></div>
+        </>
     );
 }
 export default Map
