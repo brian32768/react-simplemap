@@ -1,6 +1,6 @@
 {
   "name": "react-simplemap",
-  "version": "0.1.1",
+  "version": "1.0.3",
   "private": false,
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -22,7 +22,11 @@
   },
   "scripts": {
     "start": "parcel serve index.html --open",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "build-package": "npm run clean && npm run transpile && node tasks/prepare-package && cp README.md build/@map46/react-simplemap",
+    "clean": "rm -rf build/*",
+    "transpile": "babel src/map --out-dir build/@map46/react-simplemap --source-maps",
+    "postversion": "git push --verbose && git push --tags --verbose"
   },
   "browserslist": {
     "production": [

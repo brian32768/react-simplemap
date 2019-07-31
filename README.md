@@ -36,9 +36,42 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ### Publishing
 
+This will publish the contents of the src/map folder as a new release.
+To install it for use in your own project, use "npm install @map46/react-simplemap".
+
 ```
-cd src/map
-npm version { patch | minor | major }
-npm login
-npm publish
+# Save all changes to github
+git push
+# Move to master branch
+git checkout master
+# Merge changes from development branch
+git merge dev
+git commit -a
+git push
 ```
+
+I had to wrestle for an hour before finding I had to do this to make "npm version" work.
+
+    eval $(ssh-agent -s) && ssh-add "j:\.ssh\id_rsa_github_bwilsoncc"
+
+or on the Mac,
+    eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa_github
+
+Update version in package.json (see below)
+
+    npm version minor
+    # or
+    npm version patch
+
+Get the current version number from the npm version command and use it here, without the leading 'v'.
+
+    npm login
+    tasks/publish.sh 0.2.18      ``this will put the release contents in build/
+    git checkout master
+
+Do NOT run "npm publish" in the top level folder. It will publish too much!
+The tasks/publish command will run "npm build-package" and "npm publish" for you.
+The script runs 'npm publish' after chdir'ing down into the build folder.
+
+At this point do 'git status' and you will see you're not on a branch.
+You need to do a 'git checkout master' to move back onto that branch or 'git checkout dev' to go back to work.
