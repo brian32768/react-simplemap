@@ -55,6 +55,7 @@ I had to wrestle for an hour before finding I had to do this to make "npm versio
     eval $(ssh-agent -s) && ssh-add "j:\.ssh\id_rsa_github_bwilsoncc"
 
 or on the Mac,
+
     eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa_github
 
 Update version in package.json (see below)
@@ -66,8 +67,9 @@ Update version in package.json (see below)
 Get the current version number from the npm version command and use it here, without the leading 'v'.
 
     npm login
-    tasks/publish.sh 0.2.18      ``this will put the release contents in build/
-    git checkout master
+    tasks/publish.sh 0.2.18
+
+tasks/publish will put the release contents in build/
 
 Do NOT run "npm publish" in the top level folder. It will publish too much!
 The tasks/publish command will run "npm build-package" and "npm publish" for you.
