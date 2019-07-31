@@ -10,7 +10,7 @@ set -o errexit
 #
 # Where the unpublished-but-prepped package is living.
 #
-BUILT_PACKAGE=build/@map46/ol-react
+BUILT_PACKAGE=build/@map46/react-simplemap
 
 #
 # URL for canonical repo.
