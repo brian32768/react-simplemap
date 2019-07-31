@@ -73,6 +73,8 @@ main() {
   npm install
   npm run build-package
   cd ${BUILT_PACKAGE}
+  pwd
+  echo publishing...
   npm publish
 }
 
