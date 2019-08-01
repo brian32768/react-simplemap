@@ -1,6 +1,13 @@
+The whole point of this project is to test publishing an npm module
+called @map46/react-simplemap.
 
-I shamelessly did the "npm run eject" step to get rid of the really elegant react-scripts
-thing that bootstrapping created for me.
+It's a React component that wraps OpenLayers and OpenStreetMap.
+You can build it and run it standalone or publish it to npmjs.com.
+
+There is an app on github that uses the module called brian32768/react-test.
+
+There will be no more feature additions to make less simple maps because
+that would not make sense. Go use the @map46/ol-react package instead!
 
 ## Available Scripts
 
@@ -22,17 +29,22 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-### Analyzing the Bundle Size
+### Sample app
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+import React from 'react'
+import Map from '@map46/react-simple-map'
+const MapApp = () => {
+    const lat=46, lon=-122, zoom=8;
+    return (
+        <>
+            <h1>a map, cha cha cha!</h2>
+            <Map lat={lat} lon={lon} zoom={zoom}/>
+        </>
+    );
+}
+export const MapApp;
+```
 
 ### Publishing
 
