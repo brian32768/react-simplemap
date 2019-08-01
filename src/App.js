@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="App">
     <h1>react-simplemap</h1>
-    <Map style={{position:'relative',top:0,width:600,height:400,padding:10}}/>
+    <Map lat={45.5} lon={-122.6} zoom={10} style={{position:'relative',top:0,width:600,height:400,padding:10}}/>
 
     <p>
         Very simple <a href="https://reactjs.org">React</a> app to demonstrate a map
