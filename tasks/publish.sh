@@ -73,6 +73,7 @@ main() {
   npm install
   npm run build-package
   cd ${BUILT_PACKAGE}
+  sed -i 's#../openlayers-6#../../../openlayers-6#' package.json
   pwd
   echo publishing...
   npm publish
