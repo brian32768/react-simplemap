@@ -9,6 +9,34 @@ There is an app on github that uses the module called brian32768/react-test.
 There will be no more feature additions to make less simple maps because
 that would not make sense. Go use the @map46/ol-react package instead!
 
+## OpenLayers 6 beta
+
+Half the reason I needed to test the "npm publish" workflow
+was to confirm whether I could use the beta version (6.x) of OpenLayers instead of
+the packaged version (5.x).
+
+I concluded that I cannot, at least not easily enough to make it worth the effort.
+
+Here are some failed notes anyway.
+
+Download the latest release tarball, for example, as of 24 Jun 19,
+
+``` wget https://github.com/openlayers/openlayers/archive/v6.0.0-beta.11.tar.gz```
+
+Then you still have to do a separate build of OpenLayers,
+```
+cd openlayers-6.0.0-beta.11
+npm install
+npm run build-package
+```
+I added this in package.json "dependencies" to refer to the local version:
+
+```"ol": "file:../openlayers-6.0.0-beta.11/build/ol"```
+
+After adding the file: dependency, you must rerun "npm install". This will create
+a symbolic link to the folder, and you should be able to see ol files in
+node_modules/ol.
+
 ## Available Scripts
 
 In the project directory, you can run:
