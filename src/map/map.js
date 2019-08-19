@@ -9,7 +9,7 @@ import OSM from 'ol/source/OSM'
 
 export {default as OpenLayersVersion} from './ol-version'
 
-const Map = ({center, zoom, onMoveEnd, onPointerMove, style}) => {
+const Map = ({className, center, zoom, onMoveEnd, onPointerMove}) => {
     const [map] = useState(new olMap({
         view: new View({
             center: fromLonLat(center),
@@ -24,15 +24,15 @@ const Map = ({center, zoom, onMoveEnd, onPointerMove, style}) => {
     });
     return (
         <>
-            <div ref={mapTarget} style={style}></div>
+            <div ref={mapTarget} className={className}></div>
         </>
     );
 }
 Map.propTypes = {
+    className: PropTypes.string,
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
     onMoveEnd: PropTypes.func,
     onPointerMove: PropTypes.func,
-    style: PropTypes.object
 }
 export default Map

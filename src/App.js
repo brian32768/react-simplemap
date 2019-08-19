@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Map, OpenLayersVersion} from './map'
 import {toLonLat} from 'ol/proj'
+import './App.css'
 
 const App = () => {
     const [pointer, setPointer] = useState();
@@ -21,7 +22,7 @@ const App = () => {
             {pointer}
             <h3><OpenLayersVersion/></h3>
             <Map center={[-122.6, 45.5]} zoom={10} onMoveEnd={handleMove} onPointerMove={handlePointer}
-                style={{position:'relative',top:0,width:600,height:400,padding:10}}/>
+                className="simplemap"/>
 
                 Simple <a href="https://reactjs.org">React</a> app to demonstrate a map
                 using <a href="https://openlayers.org">OpenLayers</a> and <a href="https://openstreetmap.org">OpenStreetMap</a>
