@@ -15,23 +15,21 @@ Half the reason I needed to test the "npm publish" workflow
 was to confirm whether I could use the beta version (6.x) of OpenLayers instead of
 the packaged version (5.x).
 
-I concluded that I cannot, at least not easily enough to make it worth the effort.
+If you already downloaded sources for ol-react and built them you have already
+done these steps.
+Download the latest release tarball, for example, as of 13-Aug-19,
 
-Here are some failed notes anyway.
-
-Download the latest release tarball, for example, as of 24 Jun 19,
-
-``` wget https://github.com/openlayers/openlayers/archive/v6.0.0-beta.11.tar.gz```
+``` wget https://github.com/openlayers/openlayers/archive/v6.0.0-beta.13.tar.gz```
 
 Then you still have to do a separate build of OpenLayers,
 ```
-cd openlayers-6.0.0-beta.11
+cd openlayers-6.0.0-beta.13
 npm install
 npm run build-package
 ```
 I added this in package.json "dependencies" to refer to the local version:
 
-```"ol": "file:../openlayers-6.0.0-beta.11/build/ol"```
+```"ol": "file:../openlayers-6.0.0-beta.13/build/ol"```
 
 After adding the file: dependency, you must rerun "npm install". This will create
 a symbolic link to the folder, and you should be able to see ol files in
