@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';  // eslint-disable-line no-unu
 import PropTypes from 'prop-types'
 
 import olMap from 'ol/map'
+import Collection from 'ol/Collection'
 import {fromLonLat} from 'ol/proj'
 import View from 'ol/view'
 import LayerGroup from 'ol/layer/Group'
@@ -14,32 +15,36 @@ import 'ol-ext/dist/ol-ext.css'
 export {default as OpenLayersVersion} from './ol-version'
 
 const Map = ({className, center, zoom, onMoveEnd, onPointerMove}) => {
-    const [map] = useState(new olMap({
-        view: new View({
-            center: fromLonLat(center),
-            zoom: zoom
-        }),
-        layers: [
+    const [map] = useState(() => {
+        const stamenLayers = new Collection([
+            new TileLayer({
+                title: "Stamen Watercolor",
+                source: new Stamen({layer:"watercolor"}),
+            }),
+            new TileLayer({
+                title: "Stamen Toner",
+                source: new Stamen({layer:"toner"})
+            }),
+        ]);
+        const layerCollection = new Collection([
             new LayerGroup({
                 title: "Stamen",
                 openInLayerSwitcher: true,
-                layers: [
-                    new TileLayer({
-                        title: "Stamen Toner",
-                        source: new Stamen({layer:"toner"})
-                    }),
-                    new TileLayer({
-                        title: "Stamen Watercolor",
-                        source: new Stamen({layer:"watercolor"})
-                    }),
-                ],
+                layers: stamenLayers,
             }),
             new TileLayer({title: "OpenStreetMap", source: new OSM()})
-        ],
-        controls: [
-            new olextLayerSwitcher()
-        ]
-    }));
+        ]);
+        return new olMap({
+            view: new View({
+                center: fromLonLat(center),
+                zoom: zoom
+            }),
+            layers: layerCollection,
+            controls: [
+                new olextLayerSwitcher()
+            ]
+        })
+    })
 
     const mapTarget = element => {map.setTarget(element)}
     useEffect(() => {
