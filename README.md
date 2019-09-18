@@ -17,23 +17,30 @@ the packaged version (5.x).
 
 If you already downloaded sources for ol-react and built them you have already
 done these steps.
-Download the latest release tarball, for example, as of 13-Aug-19,
+Download the latest release tarball, for example
 
-``` wget https://github.com/openlayers/openlayers/archive/v6.0.0-beta.13.tar.gz```
+``` wget https://github.com/openlayers/openlayers/archive/v6.0.0-beta.15.tar.gz```
 
-Then you still have to do a separate build of OpenLayers,
+I suggest you move the build output folder so you don't have to jump through hoops each time
+a new beta comes out.
+You still have to do a separate build of OpenLayers,
 ```
-cd openlayers-6.0.0-beta.13
+cd openlayers-6.0.0-beta.15
 npm install
 npm run build-package
+mv build/ol ..
 ```
-I added this in package.json "dependencies" to refer to the local version:
+I added this in package.json "dependencies" to refer to the just-built, local version:
 
-```"ol": "file:../openlayers-6.0.0-beta.13/build/ol"```
+```"ol": "file:../ol"```
 
 After adding the file: dependency, you must rerun "npm install". This will create
-a symbolic link to the folder, and you should be able to see ol files in
-node_modules/ol.
+a symbolic link to the folder, and you should be able to see the ol files in
+node_modules/ol. The 'npm install' will give you nice feedback, like this
+```
++ ol@6.0.0-beta.15
+```
+
 
 ## Available Scripts
 
