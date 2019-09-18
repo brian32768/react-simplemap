@@ -4,8 +4,12 @@ import PropTypes from 'prop-types'
 import olMap from 'ol/map'
 import {fromLonLat} from 'ol/proj'
 import View from 'ol/view'
+import LayerGroup from 'ol/layer/Group'
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM'
+import Stamen from 'ol/source/Stamen'
+import olextLayerSwitcher from 'ol-ext/control/LayerSwitcher'
+import 'ol-ext/dist/ol-ext.css'
 
 export {default as OpenLayersVersion} from './ol-version'
 
@@ -15,8 +19,28 @@ const Map = ({className, center, zoom, onMoveEnd, onPointerMove}) => {
             center: fromLonLat(center),
             zoom: zoom
         }),
-        layers: [new TileLayer({source: new OSM()})]
+        layers: [
+            new LayerGroup({
+                title: "Stamen",
+                openInLayerSwitcher: true,
+                layers: [
+                    new TileLayer({
+                        title: "Stamen Toner",
+                        source: new Stamen({layer:"toner"})
+                    }),
+                    new TileLayer({
+                        title: "Stamen Watercolor",
+                        source: new Stamen({layer:"watercolor"})
+                    }),
+                ],
+            }),
+            new TileLayer({title: "OpenStreetMap", source: new OSM()})
+        ],
+        controls: [
+            new olextLayerSwitcher()
+        ]
     }));
+
     const mapTarget = element => {map.setTarget(element)}
     useEffect(() => {
         if (typeof onMoveEnd === 'function') map.on('moveend', onMoveEnd);
