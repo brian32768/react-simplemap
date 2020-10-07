@@ -1,7 +1,7 @@
 {
   "name": "@map46/react-simplemap",
   "description": "A simple React component to add an OpenStreetMap map to a website",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "parcel serve index.html --open",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html -d build --public-url ./ --experimental-scope-hoisting",
     "build-package": "npm run clean && npm run transpile && node tasks/prepare-package && cp README.md build/@map46/react-simplemap",
     "clean": "rm -rf build/*",
     "transpile": "babel src/map --out-dir build/@map46/react-simplemap --source-maps",

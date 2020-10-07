@@ -1,1 +1,2 @@
-export const VERSION = 'latest'
+const VERSION = 'latest'
+export default VERSION;
