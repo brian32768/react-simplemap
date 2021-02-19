@@ -1,7 +1,7 @@
 {
   "name": "@map46/react-simplemap",
   "description": "A simple React component to add an OpenStreetMap map to a website",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.12.17",
