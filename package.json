@@ -4,6 +4,7 @@
   "version": "1.1.3",
   "private": false,
   "devDependencies": {
+    "@babel/cli": "^7.17",
     "@babel/core": "^7.12.17",
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
@@ -11,12 +12,13 @@
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
     "babel-preset-react-app": "^9.1.2",
-    "cssnano": "^4.1.10",
+    "buffer": "^6.0.3",
+    "cssnano": "^5.1.7",
     "eslint": "^6.8.0",
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "dependencies": {
-    "ol": "^6.5.0",
+    "ol": "^6.14.0",
     "ol-ext": "^3.1.17",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -24,7 +26,7 @@
   },
   "scripts": {
     "start": "parcel serve index.html --open",
-    "build": "parcel build index.html -d build --public-url ./ --experimental-scope-hoisting",
+    "build": "parcel build index.html --public-url ./",
     "build-package": "npm run clean && npm run transpile && node tasks/prepare-package && cp README.md build/@map46/react-simplemap",
     "clean": "rm -rf build/*",
     "transpile": "babel src/map --out-dir build/@map46/react-simplemap --source-maps",
@@ -59,21 +61,6 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-object-rest-spread",
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          "loose": true
-        }
-      ],
-      [
-        "@babel/plugin-proposal-private-methods",
-        {
-          "loose": true
-        }
-      ]
     ]
   }
 }
